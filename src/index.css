@@ -1,0 +1,975 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design System — Local Shop Registry
+   Premium SaaS Light Theme: Blue / Cyan / Green
+   ============================================================ */
+
+@theme {
+  /* Primary (Blue) */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  /* Secondary (Emerald / Success) */
+  --color-secondary-50: #ecfdf5;
+  --color-secondary-100: #d1fae5;
+  --color-secondary-500: #22c55e;
+  --color-secondary-600: #16a34a;
+  --color-secondary-700: #15803d;
+
+  /* Accent (Cyan) */
+  --color-accent-50: #ecfeff;
+  --color-accent-100: #cffafe;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+
+  /* Warning (Amber) */
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+
+  /* Danger (Red) */
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  /* Surface colors */
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1e293b;
+  --color-surface-darker: #0f172a;
+
+  /* Font */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-slide-up: slide-up 0.5s ease-out both;
+  --animate-slide-down: slide-down 0.3s ease-out both;
+  --animate-scale-in: scale-in 0.3s ease-out both;
+  --animate-spin-slow: spin 3s linear infinite;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-bounce-in: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce-in {
+  from { opacity: 0; transform: scale(0.3); }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ============================================================
+   Design Tokens — Premium Light Theme
+   ============================================================ */
+
+:root {
+  --main-bg: #F8FAFC;
+  --page-bg: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
+  --border-light: #F3F4F6;
+  --primary-blue: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-light: #EFF6FF;
+  --primary-medium: #DBEAFE;
+  --success: #16A34A;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --input-bg: #FFFFFF;
+  --navbar-bg: #FFFFFF;
+  --section-bg: #F9FAFB;
+  --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px -1px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.08), 0 2px 6px -2px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 28px -5px rgba(0,0,0,0.1), 0 6px 12px -4px rgba(0,0,0,0.06);
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+}
+
+/* Force light theme */
+html {
+  background-color: #F8FAFC;
+}
+
+body,
+body.dark,
+.dark body {
+  background-color: var(--main-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ============================================================
+   Scrollbar Styling
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* ============================================================
+   Google Places Autocomplete Dropdown
+   ============================================================ */
+
+.pac-container {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  margin-top: 4px;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  overflow: hidden;
+  z-index: 9999;
+  background-color: #FFFFFF;
+}
+
+.pac-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-top: 1px solid #F3F4F6;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  transition: background-color 0.15s ease;
+}
+
+.pac-item:first-child {
+  border-top: none;
+}
+
+.pac-item:hover {
+  background-color: var(--primary-light);
+}
+
+.pac-item-query {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.pac-icon {
+  margin-right: 8px;
+}
+
+.pac-matched {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+/* Force light theme for pac-container even if body has dark class */
+.dark .pac-container,
+body.dark .pac-container {
+  background-color: #FFFFFF !important;
+  border-color: var(--border) !important;
+}
+
+.dark .pac-item {
+  border-top-color: #F3F4F6 !important;
+  color: var(--text-secondary) !important;
+}
+
+.dark .pac-item:hover {
+  background-color: var(--primary-light) !important;
+}
+
+.dark .pac-item-query {
+  color: var(--text-primary) !important;
+}
+
+.dark .pac-matched {
+  color: var(--primary-blue) !important;
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+
+/* Navbar glass — simplified to solid white for light theme */
+.glass {
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Gradient utilities — used on icon boxes */
+.gradient-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+/* Page background (solid light, replaces mesh) */
+.gradient-mesh {
+  background-color: var(--main-bg);
+  min-height: calc(100vh - 72px);
+  width: 100%;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer loading effect */
+.shimmer {
+  background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ============================================================
+   Autofill Overrides
+   ============================================================ */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+  -webkit-text-fill-color: #111827 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+nav {
+  background-color: var(--navbar-bg) !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-bottom-width: 1px !important;
+  height: 72px !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.04) !important;
+}
+
+/* Override the glass class on nav to be solid white */
+nav.glass {
+  background: var(--navbar-bg) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* Navbar inner container */
+nav .max-w-7xl {
+  max-width: 1400px !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+}
+
+/* ============================================================
+   NAVBAR NAVIGATION LINKS
+   Active: solid blue bg + white text
+   Hover: light blue bg (#DBEAFE) + blue text
+   ============================================================ */
+
+/* Active nav link */
+nav a[class*="bg-primary-50"],
+nav a.bg-primary-50 {
+  background-color: var(--primary-blue) !important;
+  color: #FFFFFF !important;
+}
+
+/* Override NavLink active state */
+.nav-link-active {
+  background-color: var(--primary-blue) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 4px rgba(37,99,235,0.25) !important;
+}
+
+/* NavLink hover (non-active) */
+.nav-link-hover:hover {
+  background-color: var(--primary-medium) !important;
+  color: var(--primary-blue) !important;
+}
+
+/* Force NavLink active colors */
+nav a[aria-current="page"],
+nav a.text-primary-700 {
+  background-color: var(--primary-blue) !important;
+  color: #FFFFFF !important;
+}
+
+/* ============================================================
+   USER PROFILE SECTION IN NAVBAR
+   White background, light border — no dark gray
+   ============================================================ */
+
+/* Remove dark bg from user pill */
+nav .bg-slate-50,
+nav div.bg-slate-50 {
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* User avatar circle stays blue */
+nav .gradient-primary {
+  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+}
+
+/* Email text */
+nav .text-slate-600 {
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================================
+   SIGN UP BUTTON IN NAVBAR (white text on blue bg)
+   ============================================================ */
+
+nav a.gradient-primary,
+a.gradient-primary {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}
+
+nav a.gradient-primary:hover,
+a.gradient-primary:hover {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}
+
+/* ============================================================
+   LINKS — Global
+   ============================================================ */
+
+/* All anchor tags default to blue */
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Links with gradient backgrounds must have white text */
+a[class*="gradient-"],
+a.btn-primary,
+a[class*="bg-gradient-to-r"],
+a[class*="text-white"] {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}
+
+a[class*="gradient-"]:hover,
+a.btn-primary:hover,
+a[class*="bg-gradient-to-r"]:hover {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+h1 { font-size: 2.25rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); }
+h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); }
+h4 { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+
+p { color: var(--text-secondary); line-height: 1.6; }
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.card-base {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card-base:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: #BFDBFE;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: var(--primary-blue);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px -2px rgba(37,99,235,0.35);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 14px -3px rgba(37,99,235,0.45);
+  transform: translateY(-1px);
+  color: #FFFFFF !important;
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-blue);
+  border-color: #BFDBFE;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border-radius: 0.5rem;
+  border: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background-color: var(--section-bg);
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.input-base,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  background-color: var(--input-bg) !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: 0.75rem !important;
+  color: var(--text-primary) !important;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select {
+  height: 52px !important;
+  padding: 0 1rem;
+}
+
+.input-base::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.input-base:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.12) !important;
+  outline: none !important;
+}
+
+.input-base:disabled,
+input:disabled,
+select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: var(--section-bg) !important;
+}
+
+.input-error {
+  border-color: #F87171 !important;
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 4px rgba(248,113,113,0.15) !important;
+}
+
+/* ============================================================
+   OVERRIDE HARDCODED DARK INPUTS (bg-slate-900)
+   ============================================================ */
+
+input.bg-slate-900,
+textarea.bg-slate-900,
+select.bg-slate-900 {
+  background-color: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+input.bg-slate-900::placeholder,
+textarea.bg-slate-900::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================================
+   DASHBOARD LAYOUT
+   ============================================================ */
+
+/* Page container centering */
+.gradient-mesh > div.mx-auto,
+.gradient-mesh > div[class*="max-w"] {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-top: 40px !important;
+  padding-bottom: 48px !important;
+}
+
+/* Stat cards - consistent white cards */
+.gradient-mesh > div.mx-auto > div.grid > div,
+.gradient-mesh > div[class*="max-w"] > div.grid > div {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 1rem !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.25s ease !important;
+}
+
+.gradient-mesh > div.mx-auto > div.grid > div:hover {
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-2px) !important;
+  border-color: #BFDBFE !important;
+}
+
+/* Quick action cards */
+#quick-register,
+#quick-search {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 1rem !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+#quick-register:hover,
+#quick-search:hover {
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-3px) !important;
+  border-color: #BFDBFE !important;
+}
+
+/* Shop cards */
+[id^="shop-card-"] {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0.875rem !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.25s ease !important;
+  height: auto !important;
+  min-height: 160px !important;
+  max-height: 200px !important;
+}
+
+[id^="shop-card-"]:hover {
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-3px) !important;
+  border-color: #BFDBFE !important;
+}
+
+/* ============================================================
+   SECTION HEADERS (Dashboard section titles)
+   ============================================================ */
+
+/* "Quick Actions" and "Recent Shops" section labels */
+h2.text-\\[18px\\].font-semibold.text-slate-500,
+h2.uppercase {
+  font-size: 0.8125rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  color: var(--text-muted) !important;
+}
+
+/* ============================================================
+   FORMS — Register Shop
+   ============================================================ */
+
+/* Form card wrapper */
+.gradient-mesh div.bg-white\/60,
+.gradient-mesh div.bg-white\/95 {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 8px 24px -4px rgba(0,0,0,0.07), 0 2px 8px -2px rgba(0,0,0,0.04) !important;
+}
+
+/* Form labels */
+label {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+}
+
+/* Required asterisk */
+label span.text-red-500 {
+  color: #DC2626 !important;
+}
+
+/* Character counter bg */
+textarea + span,
+span.absolute {
+  background-color: rgba(249,250,251,0.9) !important;
+  color: var(--text-muted) !important;
+}
+
+/* ============================================================
+   SEARCH PAGE — Filter bar
+   ============================================================ */
+
+/* Active filter pills */
+span.inline-flex.items-center.bg-slate-800,
+.bg-slate-800.text-slate-300 {
+  background-color: var(--primary-light) !important;
+  color: var(--primary-blue) !important;
+  border-color: #BFDBFE !important;
+}
+
+/* Results count header border */
+.border-b.border-slate-200\/50 {
+  border-bottom-color: var(--border) !important;
+}
+
+/* Sort dropdown override */
+select.bg-slate-900:disabled {
+  background-color: var(--section-bg) !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--border) !important;
+  opacity: 0.75;
+}
+
+/* Location selected pill in search bar */
+.bg-blue-500\/10 {
+  background-color: var(--primary-light) !important;
+  border-color: #BFDBFE !important;
+}
+
+/* ============================================================
+   CARD TEXT COLORS — FORCE READABLE LIGHT THEME TEXT
+   ============================================================ */
+
+/* Stat card text */
+.gradient-mesh .text-slate-900,
+.gradient-mesh .dark\:text-white {
+  color: var(--text-primary) !important;
+}
+
+.gradient-mesh .text-slate-500,
+.gradient-mesh .dark\:text-slate-400 {
+  color: var(--text-secondary) !important;
+}
+
+/* Category badges — bright readable colors */
+[class*="bg-red-100"],
+[class*="bg-amber-100"],
+[class*="bg-yellow-100"],
+[class*="bg-green-100"],
+[class*="bg-emerald-100"],
+[class*="bg-cyan-100"],
+[class*="bg-blue-100"],
+[class*="bg-violet-100"],
+[class*="bg-purple-100"],
+[class*="bg-orange-100"],
+[class*="bg-pink-100"] {
+  opacity: 1 !important;
+}
+
+/* Dark mode category badge overrides → keep light */
+span[class*="bg-red-900"],
+span[class*="bg-amber-900"],
+span[class*="bg-green-900"],
+span[class*="bg-cyan-900"],
+span[class*="bg-blue-900"],
+span[class*="bg-violet-900"],
+span[class*="bg-orange-900"] {
+  background-color: var(--primary-light) !important;
+  color: var(--primary-blue) !important;
+}
+
+/* ============================================================
+   DARK MODE OVERRIDES → FORCE LIGHT THEME
+   ============================================================ */
+
+.dark body,
+body.dark {
+  background-color: var(--main-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark .dark\:text-white,
+.dark .dark\:text-slate-100,
+.dark .dark\:text-slate-200,
+.dark .dark\:text-slate-300,
+.dark .dark\:text-slate-400 {
+  color: var(--text-primary) !important;
+}
+
+.dark .dark\:text-slate-500 {
+  color: var(--text-muted) !important;
+}
+
+.dark .dark\:bg-slate-900,
+.dark .dark\:bg-slate-950,
+.dark .dark\:bg-slate-800,
+.dark .dark\:bg-slate-900\/40,
+.dark .dark\:bg-slate-900\/20,
+.dark .dark\:bg-slate-950\/60 {
+  background-color: var(--card-bg) !important;
+}
+
+.dark .dark\:border-slate-800,
+.dark .dark\:border-slate-700,
+.dark .dark\:border-slate-800\/50,
+.dark .dark\:border-slate-700\/50 {
+  border-color: var(--border) !important;
+}
+
+.dark .dark\:bg-primary-900\/20 { background-color: var(--primary-light) !important; }
+.dark .dark\:bg-secondary-900\/20 { background-color: #ECFDF5 !important; }
+.dark .dark\:bg-accent-900\/20 { background-color: #ECFEFF !important; }
+.dark .dark\:bg-primary-900\/30 { background-color: var(--primary-medium) !important; }
+.dark .dark\:text-primary-400 { color: var(--primary-blue) !important; }
+.dark .dark\:text-red-400 { color: var(--danger) !important; }
+
+.dark .dark\:bg-red-900\/30,
+.dark .dark\:bg-red-900\/20 {
+  background-color: #FEE2E2 !important;
+}
+
+/* ============================================================
+   LOGIN & SIGNUP PAGES
+   ============================================================ */
+
+/* White card container */
+.gradient-mesh div.bg-white\/95,
+.gradient-mesh div[class*="bg-slate-900\/95"] {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 20px 40px -8px rgba(0,0,0,0.08), 0 6px 16px -4px rgba(0,0,0,0.04) !important;
+  border-radius: 1.25rem !important;
+}
+
+/* Ensure text on gradient header strips (blue/green) is white */
+.gradient-primary *,
+.gradient-secondary *,
+.gradient-accent * {
+  color: #FFFFFF !important;
+}
+
+/* Password show/hide buttons */
+button.hover\:text-slate-200 {
+  color: var(--text-muted) !important;
+}
+
+button.hover\:text-slate-200:hover {
+  color: var(--text-primary) !important;
+  background-color: var(--section-bg) !important;
+}
+
+/* ============================================================
+   PLACES AUTOCOMPLETE MANUAL SWITCH BUTTON
+   ============================================================ */
+
+.absolute.right-3.top-1\/2 {
+  background-color: var(--page-bg) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0.5rem !important;
+}
+
+.absolute.right-3.top-1\/2:hover {
+  background-color: var(--primary-light) !important;
+  color: var(--primary-blue) !important;
+}
+
+/* ============================================================
+   TIPS SECTION — Hidden
+   ============================================================ */
+
+/* Remove/hide the Tips for Registering box */
+.mt-8.p-6.bg-blue-500\/10 {
+  display: none !important;
+}
+
+/* ============================================================
+   HIDE DARK MODE TOGGLE
+   ============================================================ */
+
+#dark-mode-toggle,
+button[aria-label="Toggle dark mode"] {
+  display: none !important;
+}
+
+/* ============================================================
+   RESPONSIVE LAYOUT UTILITIES
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .gradient-mesh > div.mx-auto,
+  .gradient-mesh > div[class*="max-w"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 24px !important;
+    padding-bottom: 32px !important;
+  }
+
+  nav .max-w-7xl {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .gradient-mesh > div.mx-auto,
+  .gradient-mesh > div[class*="max-w"] {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+  }
+}
