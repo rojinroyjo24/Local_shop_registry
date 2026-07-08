@@ -5,6 +5,7 @@ import { loadGoogleMapsAPI } from '../services/googlePlaces'
  * PlacesAutocomplete — Uses the classic google.maps.places.Autocomplete widget.
  * Falls back to a manual text input if the API fails to load OR if the user
  * opts to enter the address manually (useful if Google billing/API configuration is incomplete).
+ * UI redesign: cleaned up dark mode classes.
  */
 export default function PlacesAutocomplete({ onPlaceSelect, placeholder = 'Search for a location...', disabled = false }) {
   const inputRef = useRef(null)
@@ -86,6 +87,7 @@ export default function PlacesAutocomplete({ onPlaceSelect, placeholder = 'Searc
     return (
       <div className="space-y-3 animate-scale-in">
         {loadError && (
+          /* UI CHANGE: clean warning, no dark classes */
           <div className="flex items-center gap-2.5 px-3.5 py-2.5 bg-amber-50 border border-amber-200 rounded-xl">
             <svg className="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
@@ -104,7 +106,7 @@ export default function PlacesAutocomplete({ onPlaceSelect, placeholder = 'Searc
             placeholder="Type the address manually..."
             disabled={disabled}
             style={{ paddingLeft: '16px', paddingRight: '140px' }}
-            className="w-full h-[52px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200"
+            className="w-full h-[52px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 text-[15px] focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200"
           />
           {!loadError && (
             <button
@@ -124,7 +126,7 @@ export default function PlacesAutocomplete({ onPlaceSelect, placeholder = 'Searc
     <div className="space-y-2">
       <div className="relative">
         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10 flex items-center justify-center">
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
@@ -135,7 +137,7 @@ export default function PlacesAutocomplete({ onPlaceSelect, placeholder = 'Searc
           placeholder={placeholder}
           disabled={disabled || !loaded}
           style={{ paddingLeft: '48px', paddingRight: '140px' }}
-          className={`w-full h-[52px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`w-full h-[52px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 text-[15px] focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
         />
         <button
           type="button"

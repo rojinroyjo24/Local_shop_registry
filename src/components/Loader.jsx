@@ -1,5 +1,6 @@
 /**
  * Loader — Animated loading spinner with full-page and inline variants.
+ * UI redesign: removed dark mode classes, blue spinner on white.
  */
 export default function Loader({ fullPage = false, size = 'md', text = '' }) {
   const sizeClasses = {
@@ -11,17 +12,18 @@ export default function Loader({ fullPage = false, size = 'md', text = '' }) {
   const spinner = (
     <div className="flex flex-col items-center gap-4">
       <div className="relative">
+        {/* UI CHANGE: blue spinner, light track */}
         <div
-          className={`${sizeClasses[size]} rounded-full border-primary-100 border-t-primary-600 animate-spin dark:border-slate-700 dark:border-t-primary-400`}
+          className={`${sizeClasses[size]} rounded-full border-blue-100 border-t-blue-600 animate-spin`}
         />
         {size !== 'sm' && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className={`${size === 'lg' ? 'w-6 h-6' : 'w-3 h-3'} rounded-full bg-primary-500/20 animate-pulse-soft`} />
+            <div className={`${size === 'lg' ? 'w-6 h-6' : 'w-3 h-3'} rounded-full bg-blue-500/20 animate-pulse-soft`} />
           </div>
         )}
       </div>
       {text && (
-        <p className="text-sm font-medium text-slate-500 dark:text-slate-400 animate-pulse-soft">
+        <p className="text-[14px] font-medium text-slate-500 animate-pulse-soft">
           {text}
         </p>
       )}
@@ -30,7 +32,7 @@ export default function Loader({ fullPage = false, size = 'md', text = '' }) {
 
   if (fullPage) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-md">
         {spinner}
       </div>
     )

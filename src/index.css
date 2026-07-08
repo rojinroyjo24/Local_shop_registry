@@ -2,7 +2,7 @@
 
 /* ============================================================
    Design System — Local Shop Registry
-   Premium SaaS Light Theme: Blue / Cyan / Green
+   Premium SaaS Light Theme
    ============================================================ */
 
 @theme {
@@ -111,31 +111,28 @@
 }
 
 /* ============================================================
-   Design Tokens — Premium Light Theme
+   Design Tokens
    ============================================================ */
 
 :root {
   --main-bg: #F8FAFC;
-  --page-bg: #FFFFFF;
   --card-bg: #FFFFFF;
-  --border: #E5E7EB;
-  --border-light: #F3F4F6;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
   --primary-blue: #2563EB;
   --primary-hover: #1D4ED8;
   --primary-light: #EFF6FF;
   --primary-medium: #DBEAFE;
-  --success: #16A34A;
+  --success: #22C55E;
   --warning: #F59E0B;
   --danger: #EF4444;
   --text-primary: #111827;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
-  --input-bg: #FFFFFF;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
   --navbar-bg: #FFFFFF;
-  --section-bg: #F9FAFB;
-  --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px -1px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.08), 0 2px 6px -2px rgba(0,0,0,0.05);
-  --shadow-lg: 0 10px 28px -5px rgba(0,0,0,0.1), 0 6px 12px -4px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.06), 0 2px 4px -2px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 24px -4px rgba(0,0,0,0.08), 0 4px 8px -4px rgba(0,0,0,0.03);
 }
 
 /* ============================================================
@@ -150,6 +147,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #F8FAFC;
 }
 
 body {
@@ -160,11 +158,7 @@ body {
   color: var(--text-primary);
 }
 
-/* Force light theme */
-html {
-  background-color: #F8FAFC;
-}
-
+/* Force light theme globally */
 body,
 body.dark,
 .dark body {
@@ -173,24 +167,45 @@ body.dark,
 }
 
 /* ============================================================
-   Scrollbar Styling
+   Scrollbar
    ============================================================ */
 
-::-webkit-scrollbar {
-  width: 6px;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+h1 { font-size: 2.25rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); }
+h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); }
+h4 { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+p { color: var(--text-secondary); line-height: 1.6; }
+
+/* ============================================================
+   Links
+   ============================================================ */
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+a:hover {
+  color: var(--primary-hover);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #D1D5DB;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #9CA3AF;
+/* Links with gradient/colored backgrounds keep white text */
+a[class*="gradient-"],
+a[class*="bg-gradient-to-r"],
+a[class*="text-white"],
+a[class*="bg-blue-600"] {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
 }
 
 /* ============================================================
@@ -211,71 +226,35 @@ body.dark,
 .pac-item {
   padding: 10px 14px;
   cursor: pointer;
-  border-top: 1px solid #F3F4F6;
+  border-top: 1px solid var(--border-light);
   font-size: 0.875rem;
   line-height: 1.5;
   color: var(--text-secondary);
   transition: background-color 0.15s ease;
 }
 
-.pac-item:first-child {
-  border-top: none;
-}
+.pac-item:first-child { border-top: none; }
+.pac-item:hover { background-color: var(--primary-light); }
+.pac-item-query { color: var(--text-primary); font-weight: 500; }
+.pac-icon { margin-right: 8px; }
+.pac-matched { color: var(--primary-blue); font-weight: 600; }
 
-.pac-item:hover {
-  background-color: var(--primary-light);
-}
-
-.pac-item-query {
-  color: var(--text-primary);
-  font-weight: 500;
-  font-size: 0.875rem;
-}
-
-.pac-icon {
-  margin-right: 8px;
-}
-
-.pac-matched {
-  color: var(--primary-blue);
-  font-weight: 600;
-}
-
-/* Force light theme for pac-container even if body has dark class */
-.dark .pac-container,
-body.dark .pac-container {
-  background-color: #FFFFFF !important;
-  border-color: var(--border) !important;
-}
-
-.dark .pac-item {
-  border-top-color: #F3F4F6 !important;
-  color: var(--text-secondary) !important;
-}
-
-.dark .pac-item:hover {
-  background-color: var(--primary-light) !important;
-}
-
-.dark .pac-item-query {
-  color: var(--text-primary) !important;
-}
-
-.dark .pac-matched {
-  color: var(--primary-blue) !important;
-}
+/* Force light theme for pac-container */
+.dark .pac-container { background-color: #FFFFFF !important; border-color: var(--border) !important; }
+.dark .pac-item { border-top-color: var(--border-light) !important; color: var(--text-secondary) !important; }
+.dark .pac-item:hover { background-color: var(--primary-light) !important; }
+.dark .pac-item-query { color: var(--text-primary) !important; }
+.dark .pac-matched { color: var(--primary-blue) !important; }
 
 /* ============================================================
    Utility Classes
    ============================================================ */
 
-/* Navbar glass — simplified to solid white for light theme */
 .glass {
   background: var(--navbar-bg);
   border-bottom: 1px solid var(--border);
 }
 
-/* Gradient utilities — used on icon boxes */
 .gradient-primary {
   background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
 }
@@ -292,7 +271,14 @@ body.dark .pac-container {
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
 }
 
-/* Page background (solid light, replaces mesh) */
+/* Ensure white text on gradient backgrounds */
+.gradient-primary *,
+.gradient-secondary *,
+.gradient-accent * {
+  color: #FFFFFF !important;
+}
+
+/* Page background */
 .gradient-mesh {
   background-color: var(--main-bg);
   min-height: calc(100vh - 72px);
@@ -306,7 +292,6 @@ body.dark .pac-container {
   background-clip: text;
 }
 
-/* Shimmer loading effect */
 .shimmer {
   background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
   background-size: 200% 100%;
@@ -327,167 +312,104 @@ input:-webkit-autofill:active {
 }
 
 /* ============================================================
-   NAVBAR
+   Navbar
    ============================================================ */
 
 nav {
   background-color: var(--navbar-bg) !important;
   border-bottom: 1px solid var(--border) !important;
-  border-bottom-width: 1px !important;
   height: 72px !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.04) !important;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.03) !important;
 }
 
-/* Override the glass class on nav to be solid white */
 nav.glass {
   background: var(--navbar-bg) !important;
   border: none !important;
   border-bottom: 1px solid var(--border) !important;
 }
 
-/* Navbar inner container */
 nav .max-w-7xl {
-  max-width: 1400px !important;
+  max-width: 1320px !important;
   padding-left: 32px !important;
   padding-right: 32px !important;
 }
 
-/* ============================================================
-   NAVBAR NAVIGATION LINKS
-   Active: solid blue bg + white text
-   Hover: light blue bg (#DBEAFE) + blue text
-   ============================================================ */
-
-/* Active nav link */
-nav a[class*="bg-primary-50"],
-nav a.bg-primary-50 {
+/* Nav link active state */
+nav a[aria-current="page"] {
   background-color: var(--primary-blue) !important;
   color: #FFFFFF !important;
 }
 
-/* Override NavLink active state */
-.nav-link-active {
-  background-color: var(--primary-blue) !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 1px 4px rgba(37,99,235,0.25) !important;
-}
-
-/* NavLink hover (non-active) */
-.nav-link-hover:hover {
-  background-color: var(--primary-medium) !important;
-  color: var(--primary-blue) !important;
-}
-
-/* Force NavLink active colors */
-nav a[aria-current="page"],
-nav a.text-primary-700 {
-  background-color: var(--primary-blue) !important;
-  color: #FFFFFF !important;
-}
-
-/* ============================================================
-   USER PROFILE SECTION IN NAVBAR
-   White background, light border — no dark gray
-   ============================================================ */
-
-/* Remove dark bg from user pill */
-nav .bg-slate-50,
-nav div.bg-slate-50 {
-  background-color: #FFFFFF !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm) !important;
-}
-
-/* User avatar circle stays blue */
+/* Nav user pill */
 nav .gradient-primary {
   background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
 }
 
-/* Email text */
-nav .text-slate-600 {
-  color: var(--text-secondary) !important;
-}
-
 /* ============================================================
-   SIGN UP BUTTON IN NAVBAR (white text on blue bg)
+   Inputs
    ============================================================ */
 
-nav a.gradient-primary,
-a.gradient-primary {
-  color: #FFFFFF !important;
-  text-decoration: none !important;
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: 12px !important;
+  color: var(--text-primary) !important;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
 }
 
-nav a.gradient-primary:hover,
-a.gradient-primary:hover {
-  color: #FFFFFF !important;
-  text-decoration: none !important;
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select {
+  height: 52px !important;
+  padding: 0 1rem;
 }
 
-/* ============================================================
-   LINKS — Global
-   ============================================================ */
-
-/* All anchor tags default to blue */
-a {
-  color: var(--primary-blue);
-  text-decoration: none;
-  transition: color 0.15s ease;
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted) !important;
 }
 
-a:hover {
-  color: var(--primary-hover);
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1) !important;
+  outline: none !important;
 }
 
-/* Links with gradient backgrounds must have white text */
-a[class*="gradient-"],
-a.btn-primary,
-a[class*="bg-gradient-to-r"],
-a[class*="text-white"] {
-  color: #FFFFFF !important;
-  text-decoration: none !important;
+input:disabled,
+select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: #F8FAFC !important;
 }
 
-a[class*="gradient-"]:hover,
-a.btn-primary:hover,
-a[class*="bg-gradient-to-r"]:hover {
-  color: #FFFFFF !important;
-  text-decoration: none !important;
+/* Form labels */
+label {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
 }
 
-/* ============================================================
-   TYPOGRAPHY
-   ============================================================ */
-
-h1 { font-size: 2.25rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
-h2 { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); }
-h3 { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); }
-h4 { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
-
-p { color: var(--text-secondary); line-height: 1.6; }
-
-/* ============================================================
-   CARDS
-   ============================================================ */
-
-.card-base {
-  background-color: var(--card-bg);
-  border-radius: 1rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-}
-
-.card-base:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-  border-color: #BFDBFE;
+label span.text-red-500 {
+  color: #DC2626 !important;
 }
 
 /* ============================================================
-   BUTTONS
+   Buttons
    ============================================================ */
 
 .btn-primary {
@@ -500,8 +422,8 @@ p { color: var(--text-secondary); line-height: 1.6; }
   font-weight: 600;
   color: #FFFFFF;
   background-color: var(--primary-blue);
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 8px -2px rgba(37,99,235,0.35);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(37,99,235,0.2);
   transition: all 0.2s ease;
   cursor: pointer;
   border: none;
@@ -510,7 +432,7 @@ p { color: var(--text-secondary); line-height: 1.6; }
 
 .btn-primary:hover {
   background-color: var(--primary-hover);
-  box-shadow: 0 4px 14px -3px rgba(37,99,235,0.45);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.3);
   transform: translateY(-1px);
   color: #FFFFFF !important;
 }
@@ -534,9 +456,9 @@ p { color: var(--text-secondary); line-height: 1.6; }
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-secondary);
-  background-color: var(--card-bg);
+  background-color: #FFFFFF;
   border: 1.5px solid var(--border);
-  border-radius: 0.75rem;
+  border-radius: 12px;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -547,129 +469,164 @@ p { color: var(--text-secondary); line-height: 1.6; }
   border-color: #BFDBFE;
 }
 
-.btn-ghost {
-  display: inline-flex;
+/* ============================================================
+   Cards
+   ============================================================ */
+
+.card-base {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card-base:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: #BFDBFE;
+}
+
+/* ============================================================
+   Auth Pages — Login / Signup
+   ============================================================ */
+
+.auth-page-bg {
+  min-height: calc(100vh - 72px);
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: transparent;
-  border-radius: 0.5rem;
-  border: none;
-  transition: all 0.2s ease;
-  cursor: pointer;
+  padding: 2rem 0;
+  background-color: var(--main-bg);
 }
 
-.btn-ghost:hover {
-  color: var(--text-primary);
-  background-color: var(--section-bg);
+.auth-page-bg > * {
+  position: relative;
+  z-index: 1;
 }
 
-/* ============================================================
-   INPUTS
-   ============================================================ */
+.auth-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 10px 30px -5px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
 
-.input-base,
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-select,
-textarea {
+.auth-card:hover {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 15px 40px -5px rgba(0, 0, 0, 0.08);
+}
+
+.auth-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-icon-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.auth-input {
   width: 100%;
-  background-color: var(--input-bg) !important;
-  border: 1.5px solid var(--border) !important;
-  border-radius: 0.75rem !important;
-  color: var(--text-primary) !important;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  outline: none;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-select {
   height: 52px !important;
-  padding: 0 1rem;
+  padding: 0 16px;
+  border-radius: 14px !important;
+  border: 1.5px solid #e2e8f0 !important;
+  background: #f8fafc !important;
+  color: #1e293b !important;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
 }
 
-.input-base::placeholder,
-input::placeholder,
-textarea::placeholder {
-  color: var(--text-muted) !important;
+.auth-input::placeholder {
+  color: #94a3b8 !important;
 }
 
-.input-base:focus,
-input:focus,
-select:focus,
-textarea:focus {
+.auth-input:focus {
   border-color: var(--primary-blue) !important;
-  box-shadow: 0 0 0 4px rgba(37,99,235,0.12) !important;
-  outline: none !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
 }
 
-.input-base:disabled,
-input:disabled,
-select:disabled {
-  opacity: 0.55;
+.auth-input-error {
+  border-color: #f87171 !important;
+}
+
+.auth-input-error:focus {
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1) !important;
+}
+
+.auth-btn {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 14px;
+  background: var(--primary-blue);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.auth-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+.auth-btn:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
-  background-color: var(--section-bg) !important;
-}
-
-.input-error {
-  border-color: #F87171 !important;
-}
-
-.input-error:focus {
-  box-shadow: 0 0 0 4px rgba(248,113,113,0.15) !important;
+  transform: none;
+  box-shadow: none;
 }
 
 /* ============================================================
-   OVERRIDE HARDCODED DARK INPUTS (bg-slate-900)
-   ============================================================ */
-
-input.bg-slate-900,
-textarea.bg-slate-900,
-select.bg-slate-900 {
-  background-color: var(--input-bg) !important;
-  color: var(--text-primary) !important;
-  border-color: var(--border) !important;
-}
-
-input.bg-slate-900::placeholder,
-textarea.bg-slate-900::placeholder {
-  color: var(--text-muted) !important;
-}
-
-/* ============================================================
-   DASHBOARD LAYOUT
+   Dashboard & Page Layout
    ============================================================ */
 
 /* Page container centering */
 .gradient-mesh > div.mx-auto,
 .gradient-mesh > div[class*="max-w"] {
   width: 100% !important;
-  max-width: 1400px !important;
+  max-width: 1320px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 40px !important;
-  padding-right: 40px !important;
-  padding-top: 40px !important;
-  padding-bottom: 48px !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+  padding-top: 32px !important;
+  padding-bottom: 40px !important;
 }
 
-/* Stat cards - consistent white cards */
+/* Card hover consistency */
 .gradient-mesh > div.mx-auto > div.grid > div,
 .gradient-mesh > div[class*="max-w"] > div.grid > div {
   background-color: var(--card-bg) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 1rem !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-sm) !important;
   transition: all 0.25s ease !important;
 }
@@ -685,14 +642,14 @@ textarea.bg-slate-900::placeholder {
 #quick-search {
   background-color: var(--card-bg) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 1rem !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-sm) !important;
 }
 
 #quick-register:hover,
 #quick-search:hover {
   box-shadow: var(--shadow-md) !important;
-  transform: translateY(-3px) !important;
+  transform: translateY(-2px) !important;
   border-color: #BFDBFE !important;
 }
 
@@ -700,113 +657,41 @@ textarea.bg-slate-900::placeholder {
 [id^="shop-card-"] {
   background-color: var(--card-bg) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 0.875rem !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-sm) !important;
   transition: all 0.25s ease !important;
-  height: auto !important;
   min-height: 160px !important;
-  max-height: 200px !important;
+  height: auto !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
 }
 
 [id^="shop-card-"]:hover {
   box-shadow: var(--shadow-md) !important;
-  transform: translateY(-3px) !important;
+  transform: translateY(-2px) !important;
   border-color: #BFDBFE !important;
 }
 
-/* ============================================================
-   SECTION HEADERS (Dashboard section titles)
-   ============================================================ */
-
-/* "Quick Actions" and "Recent Shops" section labels */
-h2.text-\\[18px\\].font-semibold.text-slate-500,
-h2.uppercase {
-  font-size: 0.8125rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.07em !important;
-  color: var(--text-muted) !important;
-}
-
-/* ============================================================
-   FORMS — Register Shop
-   ============================================================ */
-
-/* Form card wrapper */
+/* Form cards */
 .gradient-mesh div.bg-white\/60,
 .gradient-mesh div.bg-white\/95 {
   background-color: var(--card-bg) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 1.25rem !important;
-  box-shadow: 0 8px 24px -4px rgba(0,0,0,0.07), 0 2px 8px -2px rgba(0,0,0,0.04) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
-/* Form labels */
-label {
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  color: var(--text-primary) !important;
-}
-
-/* Required asterisk */
-label span.text-red-500 {
-  color: #DC2626 !important;
-}
-
-/* Character counter bg */
+/* Character counter */
 textarea + span,
 span.absolute {
-  background-color: rgba(249,250,251,0.9) !important;
+  background-color: rgba(248,250,252,0.9) !important;
   color: var(--text-muted) !important;
 }
 
 /* ============================================================
-   SEARCH PAGE — Filter bar
+   Category Badges
    ============================================================ */
 
-/* Active filter pills */
-span.inline-flex.items-center.bg-slate-800,
-.bg-slate-800.text-slate-300 {
-  background-color: var(--primary-light) !important;
-  color: var(--primary-blue) !important;
-  border-color: #BFDBFE !important;
-}
-
-/* Results count header border */
-.border-b.border-slate-200\/50 {
-  border-bottom-color: var(--border) !important;
-}
-
-/* Sort dropdown override */
-select.bg-slate-900:disabled {
-  background-color: var(--section-bg) !important;
-  color: var(--text-secondary) !important;
-  border-color: var(--border) !important;
-  opacity: 0.75;
-}
-
-/* Location selected pill in search bar */
-.bg-blue-500\/10 {
-  background-color: var(--primary-light) !important;
-  border-color: #BFDBFE !important;
-}
-
-/* ============================================================
-   CARD TEXT COLORS — FORCE READABLE LIGHT THEME TEXT
-   ============================================================ */
-
-/* Stat card text */
-.gradient-mesh .text-slate-900,
-.gradient-mesh .dark\:text-white {
-  color: var(--text-primary) !important;
-}
-
-.gradient-mesh .text-slate-500,
-.gradient-mesh .dark\:text-slate-400 {
-  color: var(--text-secondary) !important;
-}
-
-/* Category badges — bright readable colors */
 [class*="bg-red-100"],
 [class*="bg-amber-100"],
 [class*="bg-yellow-100"],
@@ -817,28 +702,16 @@ select.bg-slate-900:disabled {
 [class*="bg-violet-100"],
 [class*="bg-purple-100"],
 [class*="bg-orange-100"],
-[class*="bg-pink-100"] {
+[class*="bg-pink-100"],
+[class*="bg-indigo-100"] {
   opacity: 1 !important;
 }
 
-/* Dark mode category badge overrides → keep light */
-span[class*="bg-red-900"],
-span[class*="bg-amber-900"],
-span[class*="bg-green-900"],
-span[class*="bg-cyan-900"],
-span[class*="bg-blue-900"],
-span[class*="bg-violet-900"],
-span[class*="bg-orange-900"] {
-  background-color: var(--primary-light) !important;
-  color: var(--primary-blue) !important;
-}
-
 /* ============================================================
-   DARK MODE OVERRIDES → FORCE LIGHT THEME
+   Dark Mode Overrides — Force Light Theme
    ============================================================ */
 
-.dark body,
-body.dark {
+.dark body, body.dark {
   background-color: var(--main-bg) !important;
   color: var(--text-primary) !important;
 }
@@ -883,63 +756,40 @@ body.dark {
   background-color: #FEE2E2 !important;
 }
 
-/* ============================================================
-   LOGIN & SIGNUP PAGES
-   ============================================================ */
-
-/* White card container */
-.gradient-mesh div.bg-white\/95,
-.gradient-mesh div[class*="bg-slate-900\/95"] {
-  background-color: var(--card-bg) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: 0 20px 40px -8px rgba(0,0,0,0.08), 0 6px 16px -4px rgba(0,0,0,0.04) !important;
-  border-radius: 1.25rem !important;
-}
-
-/* Ensure text on gradient header strips (blue/green) is white */
-.gradient-primary *,
-.gradient-secondary *,
-.gradient-accent * {
-  color: #FFFFFF !important;
-}
-
-/* Password show/hide buttons */
-button.hover\:text-slate-200 {
-  color: var(--text-muted) !important;
-}
-
-button.hover\:text-slate-200:hover {
-  color: var(--text-primary) !important;
-  background-color: var(--section-bg) !important;
-}
-
-/* ============================================================
-   PLACES AUTOCOMPLETE MANUAL SWITCH BUTTON
-   ============================================================ */
-
-.absolute.right-3.top-1\/2 {
-  background-color: var(--page-bg) !important;
-  color: var(--text-secondary) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 0.5rem !important;
-}
-
-.absolute.right-3.top-1\/2:hover {
+/* Dark mode badge overrides */
+span[class*="bg-red-900"],
+span[class*="bg-amber-900"],
+span[class*="bg-green-900"],
+span[class*="bg-cyan-900"],
+span[class*="bg-blue-900"],
+span[class*="bg-violet-900"],
+span[class*="bg-orange-900"] {
   background-color: var(--primary-light) !important;
   color: var(--primary-blue) !important;
 }
 
-/* ============================================================
-   TIPS SECTION — Hidden
-   ============================================================ */
+/* Force readable text on all pages */
+.gradient-mesh .text-slate-900,
+.gradient-mesh .dark\:text-white {
+  color: var(--text-primary) !important;
+}
 
-/* Remove/hide the Tips for Registering box */
-.mt-8.p-6.bg-blue-500\/10 {
-  display: none !important;
+.gradient-mesh .text-slate-500,
+.gradient-mesh .dark\:text-slate-400 {
+  color: var(--text-secondary) !important;
 }
 
 /* ============================================================
-   HIDE DARK MODE TOGGLE
+   Location filter pill in search bar
+   ============================================================ */
+
+.bg-blue-500\/10 {
+  background-color: var(--primary-light) !important;
+  border-color: #BFDBFE !important;
+}
+
+/* ============================================================
+   Hide Dark Mode Toggle
    ============================================================ */
 
 #dark-mode-toggle,
@@ -948,14 +798,22 @@ button[aria-label="Toggle dark mode"] {
 }
 
 /* ============================================================
-   RESPONSIVE LAYOUT UTILITIES
+   Hide Tips Section on Register Page
+   ============================================================ */
+
+.mt-8.p-6.bg-blue-500\/10 {
+  display: none !important;
+}
+
+/* ============================================================
+   Responsive
    ============================================================ */
 
 @media (max-width: 640px) {
   .gradient-mesh > div.mx-auto,
   .gradient-mesh > div[class*="max-w"] {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
     padding-top: 24px !important;
     padding-bottom: 32px !important;
   }
@@ -969,7 +827,7 @@ button[aria-label="Toggle dark mode"] {
 @media (min-width: 641px) and (max-width: 1024px) {
   .gradient-mesh > div.mx-auto,
   .gradient-mesh > div[class*="max-w"] {
-    padding-left: 28px !important;
-    padding-right: 28px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
   }
 }
