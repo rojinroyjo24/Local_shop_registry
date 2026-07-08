@@ -2,6 +2,8 @@
 
 > A modern, full-stack web application that empowers users to **discover, register, and search** local shops with real-time location intelligence powered by the Google Places API.
 
+**🔗 Live Demo:** [https://local-shop-registry.vercel.app/](https://local-shop-registry.vercel.app/)
+
 <div align="center">
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
@@ -189,6 +191,8 @@ The app will be available at **[http://localhost:5173](http://localhost:5173)**
 ---
 
 ## 🌐 Deployment on Vercel
+
+This project is deployed and live at: **[https://local-shop-registry.vercel.app/](https://local-shop-registry.vercel.app/)**
 
 1. **Push** your code to GitHub
 2. Go to **[Vercel](https://vercel.com)** → **New Project** → Import your repository
