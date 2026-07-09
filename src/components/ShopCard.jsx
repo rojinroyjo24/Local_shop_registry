@@ -16,12 +16,12 @@ export default function ShopCard({ shop, showDistance = false }) {
     /* UI CHANGE: compact card, 16px radius, consistent shadow */
     <div
       id={`shop-card-${shop.id}`}
-      className="group flex flex-col justify-between bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-blue-200 transition-all duration-300 overflow-hidden will-change-transform"
+      className="group flex flex-col justify-between bg-white rounded-[16px] border border-slate-200 p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-blue-200 transition-all duration-300 overflow-hidden will-change-transform"
     >
       {/* Top — Title + Badge */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
-          <h3 className="text-[17px] font-bold text-slate-900 truncate group-hover:text-blue-600 transition-colors duration-200" style={{ fontFamily: 'var(--font-display)' }}>
+          <h3 className="text-[18px] font-bold text-slate-900 truncate group-hover:text-blue-600 transition-colors duration-200" style={{ fontFamily: 'var(--font-display)' }}>
             {shop.shop_name}
           </h3>
         </div>
@@ -35,30 +35,30 @@ export default function ShopCard({ shop, showDistance = false }) {
       {/* Middle — Description */}
       <div className="my-2 flex-1 min-w-0">
         {shop.description ? (
-          <p className="text-[13px] text-slate-500 line-clamp-1 leading-normal">
+          <p className="text-[15px] text-slate-500 line-clamp-1 leading-normal">
             {shop.description}
           </p>
         ) : (
-          <p className="text-[13px] text-slate-400 italic">
+          <p className="text-[15px] text-slate-400 italic">
             No description provided.
           </p>
         )}
       </div>
 
       {/* Bottom — Location, Date & Directions */}
-      <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-3 text-[13px] text-slate-500">
+      <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-3 text-[14px] text-slate-500">
         <div className="flex items-center gap-2 min-w-0 flex-1">
           <div className="flex items-center gap-1 min-w-0 max-w-[65%]">
             <span className="truncate">📍 {shop.address}</span>
           </div>
-          <div className="flex items-center gap-1 whitespace-nowrap text-slate-400 text-[12px]">
+          <div className="flex items-center gap-1 whitespace-nowrap text-slate-400 text-[14px]">
             <span>📅 {createdDate}</span>
           </div>
         </div>
 
         <div className="flex items-center gap-1.5 flex-shrink-0">
           {showDistance && shop.distance !== undefined && (
-            <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-md">
+            <span className="inline-flex items-center gap-1 text-[14px] font-semibold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-md">
               {shop.distance < 1
                 ? `${Math.round(shop.distance * 1000)}m`
                 : `${shop.distance.toFixed(1)}km`
@@ -70,7 +70,7 @@ export default function ShopCard({ shop, showDistance = false }) {
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shop.address)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[12px] font-semibold px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-sm transition-all"
+            className="text-[14px] font-semibold px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-sm transition-all"
           >
             Directions
           </a>
