@@ -359,13 +359,22 @@ select,
 textarea {
   width: 100%;
   background-color: #FFFFFF !important;
-  border: 1.5px solid var(--border) !important;
+  border: 1.5px solid #D6DEE8 !important;
   border-radius: 12px !important;
   color: var(--text-primary) !important;
   font-size: 0.875rem;
   line-height: 1.5;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s ease;
   outline: none;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+select:hover,
+textarea:hover {
+  border-color: #A5B4FC !important;
 }
 
 input[type="text"],
@@ -373,7 +382,7 @@ input[type="email"],
 input[type="password"],
 input[type="search"],
 select {
-  height: 52px !important;
+  height: 56px !important;
   padding: 0 1rem;
 }
 
@@ -385,8 +394,8 @@ textarea::placeholder {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--primary-blue) !important;
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.1) !important;
+  border: 2px solid #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
   outline: none !important;
 }
 

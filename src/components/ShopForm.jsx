@@ -53,11 +53,11 @@ export default function ShopForm({ onSubmit, loading = false }) {
   const descCountColor = descLen > 450 ? 'text-red-500' : descLen > 350 ? 'text-amber-500' : 'text-slate-400'
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="text-left">
       
       {/* Shop Name */}
-      <div className="mb-6">
-        <label htmlFor="shop_name" className="block text-[14px] font-medium text-slate-700 text-left mb-2">
+      <div className="mb-[28px]">
+        <label htmlFor="shop_name" className="block text-[15px] font-medium text-slate-700 text-left mb-[10px]">
           Shop Name <span className="text-red-500">*</span>
         </label>
         <div className="relative">
@@ -66,7 +66,6 @@ export default function ShopForm({ onSubmit, loading = false }) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
-          {/* UI CHANGE: cleaner input, 52px height, 12px radius */}
           <input
             id="shop_name"
             name="shop_name"
@@ -76,11 +75,11 @@ export default function ShopForm({ onSubmit, loading = false }) {
             placeholder="Enter shop name"
             disabled={loading}
             style={{ paddingLeft: '48px' }}
-            className={`w-full h-[52px] pr-4 rounded-xl border ${
+            className={`w-full h-[56px] pr-4 rounded-xl border ${
               errors.shop_name
                 ? 'border-red-400 focus:ring-red-500/20 focus:border-red-400'
                 : 'border-slate-200 focus:ring-blue-500/15 focus:border-blue-500'
-            } bg-white text-slate-900 placeholder:text-slate-400 text-[15px] focus:outline-none focus:ring-4 transition-all duration-200`}
+            } bg-white text-slate-900 placeholder:text-[15px] placeholder:text-slate-400 text-[16px] focus:outline-none focus:ring-4 transition-all duration-200`}
           />
         </div>
         {errors.shop_name && (
@@ -94,8 +93,8 @@ export default function ShopForm({ onSubmit, loading = false }) {
       </div>
 
       {/* Description */}
-      <div className="mb-6">
-        <label htmlFor="description" className="block text-[14px] font-medium text-slate-700 text-left mb-2">
+      <div className="mb-[28px]">
+        <label htmlFor="description" className="block text-[15px] font-medium text-slate-700 text-left mt-[12px] mb-[10px]">
           Description
         </label>
         <div className="relative">
@@ -106,14 +105,14 @@ export default function ShopForm({ onSubmit, loading = false }) {
             onChange={handleChange}
             placeholder="Describe your shop (optional)"
             disabled={loading}
-            style={{ height: '120px' }}
-            className={`w-full px-4 py-3 rounded-xl border ${
+            style={{ height: '140px' }}
+            className={`w-full p-5 rounded-xl border ${
               errors.description
                 ? 'border-red-400 focus:ring-red-500/20 focus:border-red-400'
                 : 'border-slate-200 focus:ring-blue-500/15 focus:border-blue-500'
-            } bg-white text-slate-900 placeholder:text-slate-400 text-[15px] focus:outline-none focus:ring-4 transition-all duration-200 resize-none`}
+            } bg-white text-slate-900 placeholder:text-[15px] placeholder:text-slate-400 text-[16px] focus:outline-none focus:ring-4 transition-all duration-200 resize-none`}
           />
-          <span className={`absolute right-3 bottom-3 text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-50 transition-colors ${descCountColor}`}>
+          <span className={`absolute right-4 bottom-4 text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-50 transition-colors ${descCountColor}`}>
             {formData.description.length}/500
           </span>
         </div>
@@ -122,11 +121,11 @@ export default function ShopForm({ onSubmit, loading = false }) {
         )}
       </div>
 
-      {/* UI CHANGE: Category + Location on same row (desktop) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      {/* Category + Location on same row (desktop) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-0">
         {/* Category */}
         <div>
-          <label htmlFor="category" className="block text-[14px] font-medium text-slate-700 text-left mb-2">
+          <label htmlFor="category" className="block text-[15px] font-medium text-slate-700 text-left mt-[12px] mb-[10px]">
             Category <span className="text-red-500">*</span>
           </label>
           <div className="relative">
@@ -136,11 +135,11 @@ export default function ShopForm({ onSubmit, loading = false }) {
               value={formData.category}
               onChange={handleChange}
               disabled={loading}
-              className={`w-full h-[52px] px-4 rounded-xl border ${
+              className={`w-full h-[56px] px-4 rounded-xl border ${
                 errors.category
                   ? 'border-red-400 focus:ring-red-500/20 focus:border-red-400'
                   : 'border-slate-200 focus:ring-blue-500/15 focus:border-blue-500'
-              } bg-white text-slate-700 text-[15px] focus:outline-none focus:ring-4 transition-all duration-200 appearance-none cursor-pointer pr-10`}
+              } bg-white text-slate-700 text-[16px] focus:outline-none focus:ring-4 transition-all duration-200 appearance-none cursor-pointer pr-10`}
             >
               <option value="">Select a category</option>
               {CATEGORIES.map(cat => (
@@ -167,7 +166,7 @@ export default function ShopForm({ onSubmit, loading = false }) {
 
         {/* Location */}
         <div>
-          <label className="block text-[14px] font-medium text-slate-700 text-left mb-2">
+          <label className="block text-[15px] font-medium text-slate-700 text-left mt-[12px] mb-[10px]">
             Location <span className="text-red-500">*</span>
           </label>
           <PlacesAutocomplete
@@ -188,7 +187,7 @@ export default function ShopForm({ onSubmit, loading = false }) {
 
       {/* Location details — auto-filled */}
       {formData.address && formData.latitude !== null && formData.longitude !== null && (
-        <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl animate-scale-in text-left">
+        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-xl animate-scale-in text-left">
           <p className="text-xs font-semibold text-blue-600 flex items-center gap-1.5 mb-2">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -209,13 +208,13 @@ export default function ShopForm({ onSubmit, loading = false }) {
         </div>
       )}
 
-      {/* Submit Button — UI CHANGE: solid blue, no gradient */}
-      <div className="pt-2">
+      {/* Dedicated Action Footer Section — mt-[40px] (40px spacing), border-t, pt-6 (24px top padding), mb-[32px] (32px bottom space) */}
+      <div className="mt-[40px] mb-[32px] border-t border-[#E5E7EB] pt-6 flex justify-center">
         <button
           id="submit-shop"
           type="submit"
           disabled={loading}
-          className="w-full h-[52px] px-6 text-[15px] font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-sm hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-500/20 hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.99] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0"
+          className="w-full sm:w-[300px] h-[56px] text-[15px] font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-[12px] shadow-sm hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-500/20 hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.99] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0"
         >
           {loading ? (
             <span className="flex items-center justify-center gap-2">

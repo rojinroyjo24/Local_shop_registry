@@ -106,7 +106,7 @@ export default function PlacesAutocomplete({ onPlaceSelect, placeholder = 'Searc
             placeholder="Type the address manually..."
             disabled={disabled}
             style={{ paddingLeft: '16px', paddingRight: '140px' }}
-            className="w-full h-[52px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 text-[15px] focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200"
+            className="w-full h-[56px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-[15px] placeholder:text-slate-400 text-[16px] focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200"
           />
           {!loadError && (
             <button
@@ -137,7 +137,7 @@ export default function PlacesAutocomplete({ onPlaceSelect, placeholder = 'Searc
           placeholder={placeholder}
           disabled={disabled || !loaded}
           style={{ paddingLeft: '48px', paddingRight: '140px' }}
-          className={`w-full h-[52px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 text-[15px] focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`w-full h-[56px] rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-[15px] placeholder:text-slate-400 text-[16px] focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 transition-all duration-200 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
         />
         <button
           type="button"

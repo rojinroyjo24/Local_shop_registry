@@ -44,21 +44,21 @@ export default function RegisterShop() {
   return (
     /* UI CHANGE: centered page, consistent bg */
     <div className="min-h-[calc(100vh-4rem)] gradient-mesh flex flex-col items-center justify-start w-full">
-      {/* UI CHANGE: max-width 850px, compact padding */}
-      <div className="w-full max-w-[850px] px-8 pt-8 pb-12">
+      {/* UI CHANGE: responsive centering, margin 48px auto (my-12) */}
+      <div className="w-full max-w-full sm:max-w-[700px] lg:max-w-[900px] px-4 sm:px-6 lg:px-8 my-12 mx-auto">
         
-        {/* Header — UI CHANGE: compact, left-aligned, no oversized icon */}
-        <div className="mb-6 animate-fade-in">
-          <h1 className="text-[24px] font-bold text-slate-900 leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
+        {/* Header — UI CHANGE: 42px title, 18px subtitle, 36px bottom space */}
+        <div className="mb-[36px] animate-fade-in text-left">
+          <h1 className="text-[42px] font-bold text-slate-900 leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
             Register a Shop
           </h1>
-          <p className="text-[14px] text-slate-500 mt-1">
+          <p className="text-[18px] text-[#64748B] mt-1">
             Add a new local shop to the registry
           </p>
         </div>
 
-        {/* Form Card — UI CHANGE: white card, 16px radius, clean shadow */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 animate-slide-up">
+        {/* Form Card — UI CHANGE: rounded 20px, 2px border, 40px (p-10) padding, 10px shadow */}
+        <div className="bg-white rounded-[20px] border-[2px] border-[#D6DEE8] p-10 shadow-[0_10px_30px_rgba(15,23,42,0.08)] animate-slide-up">
           <ShopForm onSubmit={handleSubmit} loading={loading} />
         </div>
 
